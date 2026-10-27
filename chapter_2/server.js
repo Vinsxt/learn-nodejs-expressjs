@@ -12,6 +12,7 @@ app.use(express.json());
 // Website Endpoints - Type 1
 
 app.get('/', (req, res) => {
+  console.log("User requested the home page website");
   res.send(`
     <body style="background:pink;
       color:blue">
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
       <p>${JSON.stringify(data)}</p>
       <a href="/dashboard">Dashboard</a>
     </body>
+    <script>console.log("This is a inspect console.log");</script>
     `);
 });
 
@@ -35,7 +37,7 @@ app.get('/dashboard', (req, res) => {
 
 app.get('/api/data', (req, res) => {
   console.log('API request for data');
-  res.send(data);
+  res.status(599).send(data);
 });
 
 app.post('/api/data', (req, res) => {
