@@ -19,3 +19,25 @@ Content-Type: application/json
   "username": "testuser",
   "password": "testpassword"
 }
+
+### Fetch all todos GET /TODOS (protected)
+GET http://localhost:5001/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMzYyNDI2LCJleHAiOjE3OTM0NDg4MjZ9.boIK9hO0KkBDIJdgqj7r8PHOdUTGeDnEgy6cYBpG9kY
+
+### Creates a new todo POST /TODOS (protected)
+POST http://localhost:5001/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMzYyNDI2LCJleHAiOjE3OTM0NDg4MjZ9.boIK9hO0KkBDIJdgqj7r8PHOdUTGeDnEgy6cYBpG9kY
+Content-Type: application/json
+
+{
+  "task": "Finish coding the projects"
+}
+
+### Update a todo PUT /TODOS/:id (protected)
+PUT http://localhost:5001/todos/3?page=4
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzkzMzYxMTExLCJleHAiOjE3OTM0NDc1MTF9.rl5rmhygl7-ngwJKRpH0Xbvp72L8YAejLFLQFokGDMA
+
+{
+  "completed": 1
+}

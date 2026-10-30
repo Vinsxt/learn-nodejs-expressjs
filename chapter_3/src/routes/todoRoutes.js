@@ -12,12 +12,21 @@ router.get('/', (req, res) => {
 
 // create a new todo
 router.post('/', (req, res) => {
-
+  const { task } = req.body;
+  const insertTodo = db.prepare(`INSERT INTO todos (user_id, task) VALUES (?, ?)`);
+  const result = insertTodo.run(req.userId, task);
+  res.json({ id: result.lastInsertRowid, task, completed: 0 });
 })
 
 // update a todo
 router.put('/:id', (req, res) => {
-
+  const {completed} = req.body;
+  const {id} = req.params;
+  const {page} = req.query;
+  
+  const updatedTodo = db.prepare(`UPDATE todos SET completed = ? WHERE id = ? AND user_id = ?`);
+  updatedTodo.run(completed, id, req.userId);
+  res.json({message: "Todo completed"});
 })
 
 // delete a todo
