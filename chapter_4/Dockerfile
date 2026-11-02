@@ -4,6 +4,9 @@ FROM node:22-alpine
 # Set the working directory in the container
 WORKDIR /app
 
+# Install OpenSSL for Prisma
+RUN apk add --no-cache openssl
+
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json .
 
