@@ -13,6 +13,12 @@ COPY package*.json .
 # install the dependencies
 RUN npm install
 
+# Copy prisma schema first
+COPY prisma ./prisma
+
+# Regenerate Prisma client for Linux
+RUN npx prisma generate
+
 # Copy the rest of the application code
 COPY . .
 

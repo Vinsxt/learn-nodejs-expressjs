@@ -12,7 +12,7 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/app
+      - app-data:/app
       - /app/node_modules
 
   db:
@@ -29,3 +29,4 @@ services:
 
 volumes:
   postgres-data:
+  app-data:
